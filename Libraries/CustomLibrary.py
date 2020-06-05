@@ -5,10 +5,13 @@ import RequestExceptions
 import Logger
 
 
+# Método para captar o IP externo para ser utilizado no Front e prosseguir com o teste
 def get_external_ip():
     ip = requests.get('https://api.ipify.org').text
     return ip
 
+# Realiza a requisição para a API para captar a tag do clã
+# filtrando a resposta por nome e localização
 def get_clan_by_name(name, location, token):
     url = 'https://api.clashroyale.com/v1/clans?name=' + name.replace(' ', '%20')
     headers = {"Authorization": "Bearer " + token}
@@ -28,7 +31,8 @@ def get_clan_by_name(name, location, token):
     else:
         Logger.log.error(RequestExceptions.get_exception(response))
 
-
+# Realiza a requisição de membros do clã selecionado no método get_clan_by_name
+# através da tag obtida
 def get_clan_members_by_tag(tag, headers):
     url = 'https://api.clashroyale.com/v1/clans/' + tag.replace('#', '%23') + '/members'
 
@@ -41,7 +45,7 @@ def get_clan_members_by_tag(tag, headers):
     else:
         Logger.log.error(RequestExceptions.get_exception(response))
 
-
+# Método para organizar e gerar um arquivo CSV contendo os dados dos membros
 def generate_csv(membersList):
     Logger.log.info(f'Ordenando dados dos membros para exportar em CSV.')
     with open('csvFile.csv', 'w', newline='', encoding='utf-8') as f:

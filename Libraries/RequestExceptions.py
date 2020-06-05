@@ -1,3 +1,4 @@
+# Método para retornar uma mensagem de erro caso a requisição não seja bem sucedida
 def get_exception(response):
     if (response.status_code == 400):
         return '400: Client provided incorrect parameters for the request'
