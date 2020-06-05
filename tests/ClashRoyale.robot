@@ -18,3 +18,4 @@ Caso De Teste 02: Criar nova key em Mobile
     Clicar em login 
     Ir até o menu minha conta em "Mobile"
     Criar uma nova chave 
+    

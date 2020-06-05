@@ -6,6 +6,10 @@ import datetime
 currentDirectory = os.getcwd() + '\\'
 currentDate = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
 
+isdir = os.path.isdir(f'{currentDirectory}\\Log')
+if (not isdir):
+    os.mkdir('Log') 
+    
 log = logging.getLogger()
 fhandler = logging.FileHandler(
     filename=f'{currentDirectory}/Log/{currentDate}_log.log', mode='w')
