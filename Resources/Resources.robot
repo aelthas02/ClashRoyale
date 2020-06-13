@@ -41,7 +41,7 @@ Ir até o menu minha conta em "${TIPO_TELA}"
 
 Criar uma nova chave
     ${IP_ADDRESS}                       Get External Ip
-    Wait Until Element Is Visible       xpath=//*[@id="content"]/div/div[2]/div/div/section[2]/div/div/div[2]/p/a
+    Wait Until Element Is Visible       xpath=//*[@id="content"]/div/div[2]/div/div/section[2]/div/div/div[2]/p/a   10
     Click Element                       xpath=//*[@id="content"]/div/div[2]/div/div/section[2]/div/div/div[2]/p/a
     Input Text                          id=name             ${KEY_NAME}
     Input Text                          id=description      ${DESCRIPTION}

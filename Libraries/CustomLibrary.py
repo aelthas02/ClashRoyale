@@ -23,8 +23,11 @@ def get_clan_by_name(name, location, token):
         Logger.log.debug(f'Resposta da requisicao: {response.json()}')
         Logger.log.info('Filtrando a resposta para obter a Tag do clã em específico.')
 
-        clan = [x for x in response.json()['items'] if x['location']['name'] == location]
-        tag = clan[0]['tag']
+        try: 
+            clan = [x for x in response.json()['items'] if x['location']['name'] == location]
+            tag = clan[0]['tag']
+        except KeyError:
+            Logger.log.error(f'A chave {KeyError} não foi localizada.')
 
         Logger.log.info(f'Tag obtida: {tag}')
         get_clan_members_by_tag(tag, headers)
